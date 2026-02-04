@@ -18,40 +18,118 @@
 </div>
 </header>
 <main class="site-main">
-<section class="section">
-<div class="container">
-<h1 class="section-title">全部文章</h1>
-<div class="post-list">
-<article class="post-item">
-<a class="post-title-link" href="markdown-viewer.html?file=posts/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%8E%A2%E7%A9%B6.md">前后端代码实现探究</a>
-<div class="post-meta">2026-01-20</div>
-<p class="post-excerpt">探究前端 fetch 与后端 SpringBoot Controller、Service、Repository 的交互实现逻辑。</p>
-</article>
-
-<article class="post-item">
-<a class="post-title-link" href="markdown-viewer.html?file=posts/axois%E5%BA%93%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6.md">axios 库方法研究</a>
-<div class="post-meta">2026-01-20</div>
-<p class="post-excerpt">研究 axios 的请求与响应拦截器、await 的使用场景以及与 fetch 的对比。</p>
-</article>
-
-<article class="post-item">
-<a class="post-title-link" href="markdown-viewer.html?file=posts/%E6%A2%AF%E5%AD%90%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E5%8E%9F%E7%90%86.md">梯子使用方法和原理</a>
-<div class="post-meta">2026-01-17</div>
-<p class="post-excerpt">解释为什么需要梯子、全局模式和规则模式的区别，以及 auto 节点的坑。</p>
-</article>
-
-</div>
-</div>
-</section>
+  <section class="section">
+    <div class="container">
+      <div class="posts-header">
+        <h1 class="section-title">文章列表</h1>
+        <div class="category-filter" id="category-filter">
+          <button class="filter-btn active" data-category="all">全部</button>
+          <!-- 分类按钮将由 JS 动态生成 -->
+        </div>
+      </div>
+      
+      <div class="post-list" id="post-list">
+        <!-- 文章列表将由 JS 动态生成 -->
+        <div class="loading">正在加载文章...</div>
+      </div>
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
-<div class="container footer-inner">
-<span>© <span id="year"></span> 我的个人博客</span>
-<span>Powered by GitHub Pages</span>
-</div>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> 我的个人博客</span>
+    <span>Powered by GitHub Pages</span>
+  </div>
 </footer>
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // 加载文章数据
+  fetch('posts/posts.json')
+    .then(response => response.json())
+    .then(posts => {
+      renderCategories(posts);
+      renderPosts(posts, 'all');
+    })
+    .catch(error => {
+      console.error('Error loading posts:', error);
+      document.getElementById('post-list').innerHTML = '<p class="error">加载文章列表失败，请稍后重试。</p>';
+    });
+
+  function renderCategories(posts) {
+    const categories = new Map();
+    posts.forEach(post => {
+      if (post.category && post.categoryName) {
+        categories.set(post.category, post.categoryName);
+      }
+    });
+
+    const filterContainer = document.getElementById('category-filter');
+    categories.forEach((name, key) => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.dataset.category = key;
+      btn.textContent = name;
+      btn.onclick = () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPosts(posts, key);
+      };
+      filterContainer.appendChild(btn);
+    });
+    
+    // 绑定"全部"按钮事件
+    const allBtn = filterContainer.querySelector('[data-category="all"]');
+    allBtn.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      allBtn.classList.add('active');
+      renderPosts(posts, 'all');
+    };
+  }
+
+  function renderPosts(posts, category) {
+    const container = document.getElementById('post-list');
+    container.innerHTML = '';
+
+    const filteredPosts = category === 'all' 
+      ? posts 
+      : posts.filter(post => post.category === category);
+
+    if (filteredPosts.length === 0) {
+      container.innerHTML = '<p class="no-posts">该分类下暂无文章。</p>';
+      return;
+    }
+
+    filteredPosts.forEach(post => {
+      const article = document.createElement('article');
+      article.className = 'post-item';
+      
+      const link = document.createElement('a');
+      link.className = 'post-title-link';
+      // 根据文件类型决定跳转链接
+      const fileLower = post.file.toLowerCase();
+      if (fileLower.endsWith('.pdf')) {
+        link.href = `pdf-viewer.html?file=${encodeURIComponent(post.file)}`;
+      } else {
+        // 默认为 Markdown
+        link.href = `markdown-viewer.html?file=${encodeURIComponent(post.file)}`;
+      }
+      link.textContent = post.title;
+      
+      const meta = document.createElement('div');
+      meta.className = 'post-meta';
+      meta.textContent = `${post.date} · ${post.categoryName}`;
+      
+      const excerpt = document.createElement('p');
+      excerpt.className = 'post-excerpt';
+      excerpt.textContent = post.excerpt;
+      
+      article.appendChild(link);
+      article.appendChild(meta);
+      article.appendChild(excerpt);
+      container.appendChild(article);
+    });
+  }
 </script>
 </body>
 </html>
