@@ -62,8 +62,30 @@ function initMarkdownViewer() {
     }
     return response.text();
   }).then(function(text) {
+    // 获取当前 Markdown 文件所在的目录路径
+    var lastSlashIndex = file.lastIndexOf('/');
+    var baseDir = lastSlashIndex !== -1 ? file.substring(0, lastSlashIndex + 1) : '';
+
+    // 配置 marked 解析器以支持相对路径图片
+    var renderer = new marked.Renderer();
+    var originalImage = renderer.image;
+    renderer.image = function(href, title, text) {
+      // 如果不是绝对路径（http开头、/开头）且不是 data URI，则加上 baseDir
+      if (href && !href.startsWith('http') && !href.startsWith('https') && !href.startsWith('/') && !href.startsWith('data:')) {
+        href = baseDir + href;
+      }
+      // 保持原有的 title 和 text 逻辑（虽然这里直接调用 originalImage 可能在某些版本不可行，不如直接返回 img 标签）
+      // 为了兼容性，我们简单构造 img 标签
+      var out = '<img src="' + href + '" alt="' + text + '"';
+      if (title) {
+        out += ' title="' + title + '"';
+      }
+      out += '>';
+      return out;
+    };
+
     var container = document.getElementById("markdown-content");
-    container.innerHTML = marked.parse(text);
+    container.innerHTML = marked.parse(text, { renderer: renderer });
   }).catch(function() {
     showMessage("加载文档失败，请检查文件路径是否正确，以及文件是否已经上传到仓库。");
   });
