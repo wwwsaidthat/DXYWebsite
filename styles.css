@@ -40,6 +40,9 @@ body {
   line-height: 1.8;
   color: var(--leaf-900);
   background-color: var(--mint-50);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body::before {
@@ -137,6 +140,7 @@ button {
   border-radius: inherit;
   background: rgba(255, 255, 255, 0.06);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-fast);
 }
 
@@ -157,6 +161,7 @@ button {
 .site-main {
   padding-top: 16px;
   padding-bottom: 40px;
+  flex: 1 0 auto;
 }
 
 .hero {
@@ -242,6 +247,7 @@ button {
   border-radius: inherit;
   background: rgba(255, 255, 255, 0.06);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-fast);
 }
 
@@ -382,6 +388,7 @@ button {
   border-radius: inherit;
   background: rgba(255, 255, 255, 0.06);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-fast);
 }
 
@@ -450,6 +457,7 @@ button {
   border-radius: inherit;
   background: rgba(255, 255, 255, 0.06);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-fast);
 }
 
