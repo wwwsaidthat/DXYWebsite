@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-home" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 4.5l7.5 6v8.2c0 1-0.8 1.8-1.8 1.8H6.3c-1 0-1.8-0.8-1.8-1.8Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9.3 21V14c0-0.5 0.4-1 1-1h3.4c0.6 0 1 0.5 1 1v7"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9.8c1.6 0.4 3 1.4 4 2.8 1-1.4 2.4-2.4 4-2.8"/>
+  </symbol>
+
+  <symbol id="i-posts" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.2 4.8h9.6c1 0 1.8 0.8 1.8 1.8v12.8c0 1-0.8 1.8-1.8 1.8H7.2c-1 0-1.8-0.8-1.8-1.8V6.6c0-1 0.8-1.8 1.8-1.8Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.2 8h7.6M8.2 12h7.6M8.2 16h5.2"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16.8 4.8c0 2.1-1.7 3.8-3.8 3.8S9.2 6.9 9.2 4.8"/>
+  </symbol>
+
+  <symbol id="i-about" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 12.4c2 0 3.6-1.6 3.6-3.6S14 5.2 12 5.2 8.4 6.8 8.4 8.8 10 12.4 12 12.4Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5.6 20.6c1.4-3.6 4-5.4 6.4-5.4s5 1.8 6.4 5.4"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9.4c0.6 0.8 1.6 1.4 3 1.4 1.4 0 2.4-0.6 3-1.4"/>
+  </symbol>
+
+  <symbol id="i-leaf" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 19c6.8 0.2 12.8-4.6 13.8-13.8C11.6 6.2 6.8 12.2 6 19Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 18c2.2-2.8 5.6-5.6 10-7.8"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.2 15.2c0.8-0.2 1.8-0.2 2.8 0M12.2 12.8c0.8-0.2 1.8-0.2 2.8 0"/>
+  </symbol>
+
+  <symbol id="i-arrow-left" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.8 6.6 9.2 12l5.6 5.4"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10 12h10.2"/>
+  </symbol>
+
+  <symbol id="i-arrow-right" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9.2 6.6 14.8 12l-5.6 5.4"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h10.2"/>
+  </symbol>
+</svg>

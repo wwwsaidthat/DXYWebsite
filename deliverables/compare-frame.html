@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compare Frame</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      body {
+        background: #ffffff;
+        display: grid;
+        place-items: center;
+      }
+      .frame {
+        width: 1920px;
+        height: 1080px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        overflow: hidden;
+      }
+      .pane {
+        position: relative;
+        background: #f3fbf6;
+        overflow: hidden;
+      }
+      .label {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        padding: 6px 10px;
+        font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(47, 111, 94, 0.18);
+        color: #1f2d2a;
+        border-radius: 2px;
+      }
+      .shot {
+        width: 960px;
+        height: 900px;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 90px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="pane">
+        <div class="label">改造前</div>
+        <img class="shot" src="./before-home-1440.png" alt="before" />
+      </div>
+      <div class="pane">
+        <div class="label">改造后</div>
+        <img class="shot" src="./after-home-1440.png" alt="after" />
+      </div>
+    </div>
+  </body>
+</html>
