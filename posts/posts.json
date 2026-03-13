@@ -6,5 +6,21 @@
     "categoryName": "学习资料",
     "file": "posts/微观经济学.pdf",
     "excerpt": "微观经济学相关学习资料（PDF文档）。"
+  },
+  {
+    "title": "微观经济学名词解释",
+    "date": "2026-03-13",
+    "category": "study",
+    "categoryName": "学习资料",
+    "file": "posts/微观经济学名词解释.md",
+    "excerpt": "微观经济学各章名词解释整理（Markdown）。"
+  },
+  {
+    "title": "政治经济学名词解释",
+    "date": "2026-03-13",
+    "category": "study",
+    "categoryName": "学习资料",
+    "file": "posts/政治经济学名词解释.md",
+    "excerpt": "政治经济学核心概念名词解释整理（Markdown）。"
   }
 ]
